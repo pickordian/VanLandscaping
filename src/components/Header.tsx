@@ -11,7 +11,8 @@ function Header() {
       <a className="logo" href="#Hero">
         Van's Landscaping{" "}
       </a>
-      <ul className={isNavOpened ? "opened" : ""}>
+      <BurgerMenu state={isNavOpened} setState={setNavOpened} />
+      <ul id="menu" role="menu" aria-labelledby="mobile-menu-toggle"className={isNavOpened ? "opened" : ""}>
         <li>
           {" "}
           <a href="#Services" onClick={handleLinkClick}>Services</a>
@@ -31,7 +32,7 @@ function Header() {
           </a>
         </li>
       </ul>
-      <BurgerMenu state={isNavOpened} setState={setNavOpened} />
+     
     </nav>
   );
 }
