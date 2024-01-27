@@ -1,5 +1,4 @@
 import HeroImg from "../assets/home/HeroImg1.jpg";
-import imgg from "../assets/services/10_Fence.jpg"
 function Home() {
   return (
     

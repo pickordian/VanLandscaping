@@ -1,4 +1,4 @@
-import React from "react";
+
 import { services_list } from "./interface";
 function Services() {
   return (

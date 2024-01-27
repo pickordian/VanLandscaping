@@ -1,4 +1,4 @@
-import React from "react";
+
 import { gallery_images } from "./interface";
 function Gallery() {
   return (
