@@ -1,6 +1,6 @@
-
 import { services_list } from "./interface";
-function Services() {
+
+function Services( {isDarkMode}: {isDarkMode: boolean}) {
   return (
     <section id="Services">
       <h2>Our Services</h2>
@@ -9,7 +9,7 @@ function Services() {
           return (
             <div key={index}>
               <div className="service-info">
-                <img src={service.iconSrcD} alt={`${service.alt} icon`} />
+                <img src={isDarkMode ? service.iconSrcL:service.iconSrcD} alt={`${service.alt} icon`} />
                 <h3> {service.alt} Services</h3>
                 <p>{service.description}</p>
               </div>
@@ -22,7 +22,10 @@ function Services() {
         })}{" "}
         <p>
           Not sure if we offer the service you want?{" "}
-          <a href="mailto:khanhcvan263@gmail.com">Email Us!</a>
+          <a href="mailto:khanhcvan263@gmail.com">
+            {" "}
+            <strong>Email Us!</strong>
+          </a>
         </p>
       </div>
     </section>

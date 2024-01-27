@@ -4,12 +4,14 @@ import Footer from "./components/Footer";
 import Gallery from "./components/Gallery";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
+
 function App() {
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
   return (
     <>
       <Header />
       <Home />
-      <Services />
+      <Services isDarkMode={isDarkMode} />
       <Gallery />
       <Contact />
       <Footer />

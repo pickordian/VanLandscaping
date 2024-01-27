@@ -1,12 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 $dark-green: hsl(122, 73%, 3%);
 $off-dark-green: hsl(122, 20%, 20%);
-$white-green: hsl(122, 49%, 90%);
+$white-green: hsl(122, 50%, 90%);
 $off-white-green: hsl(122, 15%, 60%);
-$background-color: $dark-green;
-$off-background-color: $off-dark-green;
-$text-color: $white-green;
-$off-text-color: $off-white-green;
+$light-green:  hsl(122, 20%, 80%);
+$off-light-green:  hsl(122, 49%, 87%);
+
+$background-color: $light-green;
+$off-background-color: $off-light-green;
+$text-color: $dark-green;
+$off-text-color: $off-dark-green;
 $font-family: "Nunito Sans", sans-serif;
 
 html {
@@ -40,6 +43,10 @@ a {
   &:hover {
     color: $text-color;
   }
+}
+
+*:focus{
+  outline: 3px solid $off-text-color;
 }
 
 img {
@@ -136,8 +143,8 @@ p {
   padding: 0.75rem 1rem;
   color: $background-color;
   &:hover {
-    background-color: $off-background-color;
-    color: $text-color;
+    background-color: $off-text-color;
+    color: $off-background-color;
   }
   transition: background-color 300ms ease-out;
 }
@@ -147,7 +154,7 @@ p {
   & > :first-child {
     color: $text-color;
     padding: 0.75rem 1rem;
-    border: 0.5px solid $off-background-color;
+    border: 0.5px solid $off-text-color;
     border-radius: 0.5rem;
   }
   gap: 1rem;
@@ -171,17 +178,22 @@ p {
     width: min(100%, 300px);
     height: 300px;
     position: relative;
+    transition: all 300ms ease-in;
     img {
       position: absolute;
       z-index: 998;
       top: 0;
       left: 0;
+      transition: all 300ms ease-in;
+    }
+    h3{
+      transition: all 300ms ease-in;
     }
     .service-info {
       padding: 2rem 1rem 0 1rem;
       box-sizing: border-box;
       z-index: 999;
-      border: 0.5px solid $off-background-color;
+      border: 0.5px solid $off-text-color;
       background-color: $background-color;
       display: flex;
       flex-direction: column;
@@ -235,7 +247,7 @@ p {
     form {
       width: min(360px, 100%);
       padding: 1rem;
-      border: 0.5px solid $off-background-color;
+      border: 0.5px solid $off-text-color;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
@@ -245,7 +257,10 @@ p {
         margin-bottom: 1rem;
         background-color: $background-color;
         color: $text-color;
-        border: 0.5px solid $off-background-color;
+        border: 0.5px solid $off-text-color;
+      }
+      input::placeholder{
+        color: $off-text-color;
       }
       button {
         border: none;
@@ -262,7 +277,7 @@ p {
 footer {
   width: 100%;
   padding: 2rem 4rem;
-  border-top: 0.5px solid $off-background-color;
+  border-top: 0.5px solid $off-text-color;
   display: flex;
   box-sizing: border-box;
   justify-content: space-between;
@@ -292,13 +307,15 @@ footer {
       position: fixed;
       right: 0;
       top: 0;
-      background-color: hsl(122, 20%, 10%);
+      background-color: $background-color;
+      border-bottom: 0.5rem solid $text-color;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       transition: height 300ms ease-in-out;
       z-index: 1000;
+      
       li:last-child {
         position: static;
       }
