@@ -9,7 +9,7 @@ function Services( {isDarkMode}: {isDarkMode: boolean}) {
           return (
             <div key={index}>
               <div className="service-info">
-                <img src={isDarkMode ? service.iconSrcL:service.iconSrcD} alt={`${service.alt} icon`} />
+                <img src={isDarkMode ? service.iconSrcD:service.iconSrcL} alt={`${service.alt} icon`} />
                 <h3> {service.alt} Services</h3>
                 <p>{service.description}</p>
               </div>

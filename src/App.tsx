@@ -5,8 +5,14 @@ import Gallery from "./components/Gallery";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 
+
 function App() {
-  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches ;
+  if (isDarkMode) {
+    const root = document.getElementById("root");
+    root?.classList.add("dark-mode");
+  }
+
   return (
     <>
       <Header />
