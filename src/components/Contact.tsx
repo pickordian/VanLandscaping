@@ -46,6 +46,7 @@ function Contact() {
             onSubmit={(e) => handleFormSubmit(e)}
             data-netlify="true"
           >
+          <input type="hidden" name="form-name" value="contact" />
             <input
               className="display-none"
               id="honey-pot"
