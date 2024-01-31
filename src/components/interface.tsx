@@ -10,6 +10,7 @@ import cleanIconL from "../assets/services/9_Clean.png";
 import fenceImg from "../assets/services/10_Fence.jpg";
 import fenceIconD from "../assets/services/11_Fence.png";
 import fenceIconL from "../assets/services/12_Fence.png";
+
 interface service {
   imgSrc: string;
   alt: string;
@@ -21,6 +22,7 @@ interface image {
   imgSrc: string;
   alt: string;
 }
+
 export const services_list: service[] = [
   {
     imgSrc: lawnImg,
@@ -139,3 +141,5 @@ export const gallery_images: image[] = [
   },
   
 ];
+
+
