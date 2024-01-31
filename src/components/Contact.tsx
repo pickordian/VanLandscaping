@@ -34,8 +34,9 @@ function Contact() {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode(formContent),
       });
-
+      
       if (!response.ok) {
+        console.log(response)
         throw new Error(
           `Server returned ${response.status} ${response.statusText}`
         );
