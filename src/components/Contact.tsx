@@ -1,52 +1,52 @@
 import { useState } from "react";
-import { setNotification } from "./Notice";
-import { FormDataObject } from "./interface";
+// import { setNotification } from "./Notice";
+// import { FormDataObject } from "./interface";
 function Contact() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const formContent: FormDataObject = {
-    "form-name": "contact",
-    name: name,
-    email: email,
-    message: message,
-  };
-  const setNotice = setNotification();
-  const encode = (data: FormDataObject): string => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  };
+  // const formContent: FormDataObject = {
+  //   "form-name": "contact",
+  //   name: name,
+  //   email: email,
+  //   message: message,
+  // };
+  // const setNotice = setNotification();
+  // const encode = (data: FormDataObject): string => {
+  //   return Object.keys(data)
+  //     .map(
+  //       (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+  //     )
+  //     .join("&");
+  // };
 
-  const handleFormSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
-    e.preventDefault();
+  // const handleFormSubmit = async (
+  //   e: React.FormEvent<HTMLFormElement>
+  // ): Promise<void> => {
+  //   e.preventDefault();
 
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode(formContent),
-      });
+  //   try {
+  //     const response = await fetch("/", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //       body: encode(formContent),
+  //     });
 
-      if (!response.ok) {
-        throw new Error(
-          `Server returned ${response.status} ${response.statusText}`
-        );
-      }
+  //     if (!response.ok) {
+  //       throw new Error(
+  //         `Server returned ${response.status} ${response.statusText}`
+  //       );
+  //     }
 
-      setNotice("Form submitted successfully", true);
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setNotice(
-        "There was an error submitting the form. Please try again or contact us directly.",
-        false
-      );
-    }
-  };
+  //     setNotice("Form submitted successfully", true);
+  //   } catch (error) {
+  //     console.error("Form submission error:", error);
+  //     setNotice(
+  //       "There was an error submitting the form. Please try again or contact us directly.",
+  //       false
+  //     );
+  //   }
+  // };
 
   return (
     <section id="Contact">
@@ -57,7 +57,8 @@ function Contact() {
           <form
             name="contact"
             data-netlify-honeypot="honey-pot"
-            onSubmit={(e) => handleFormSubmit(e)}
+            // onSubmit={(e) => handleFormSubmit(e)}
+            method="POST"
             data-netlify="true"
           >
             <input type="hidden" name="form-name" value="contact" />
