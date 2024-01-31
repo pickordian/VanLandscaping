@@ -139,7 +139,8 @@ export const gallery_images: image[] = [
     imgSrc: fenceImg,
     alt: "Example work done by Van's landscaping",
   },
-  
 ];
 
-
+export interface FormDataObject {
+  [key: string]: string;
+}

@@ -1,21 +1,35 @@
 import { useState } from "react";
 import { setNotification } from "./Notice";
+import { FormDataObject } from "./interface";
 function Contact() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const formContent: FormDataObject = {
+    "form-name": "contact",
+    name: name,
+    email: email,
+    message: message,
+  };
   const setNotice = setNotification();
+  const encode = (data: FormDataObject): string => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
+
   const handleFormSubmit = async (
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
-    const formContent = new FormData(e.target as HTMLFormElement);
 
     try {
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formContent.toString()),
+        body: encode(formContent),
       });
 
       if (!response.ok) {
@@ -46,7 +60,7 @@ function Contact() {
             onSubmit={(e) => handleFormSubmit(e)}
             data-netlify="true"
           >
-          <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="form-name" value="contact" />
             <input
               className="display-none"
               id="honey-pot"
