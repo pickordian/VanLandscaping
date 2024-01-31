@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState} from "react";
 import { setNotification } from "./Notice";
 function Contact() {
   const [name, setName] = useState<string>("");
