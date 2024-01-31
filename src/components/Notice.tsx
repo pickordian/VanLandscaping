@@ -1,5 +1,5 @@
 import { useContext, useState, createContext, ReactNode } from "react";
-import { FaCross, FaCheck } from "react-icons/fa";
+import { FaX, FaCheck } from "react-icons/fa6";
 
 interface NotificationProviderProps {
   children: ReactNode;
@@ -44,7 +44,7 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
               {notification.type ? (
                 <FaCheck color="green" />
               ) : (
-                <FaCross color="red" />
+                <FaX color="red" />
               )}
             </span>
           </>

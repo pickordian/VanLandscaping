@@ -1,52 +1,55 @@
 import { useState } from "react";
-// import { setNotification } from "./Notice";
-// import { FormDataObject } from "./interface";
+import { setNotification } from "./Notice";
+import { FormDataObject } from "./interface";
 function Contact() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  // const formContent: FormDataObject = {
-  //   "form-name": "contact",
-  //   name: name,
-  //   email: email,
-  //   message: message,
-  // };
-  // const setNotice = setNotification();
-  // const encode = (data: FormDataObject): string => {
-  //   return Object.keys(data)
-  //     .map(
-  //       (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-  //     )
-  //     .join("&");
-  // };
+  const formContent: FormDataObject = {
+    "form-name": "contact",
+    name: name,
+    email: email,
+    message: message,
+  };
+  const setNotice = setNotification();
+  const encode = (data: FormDataObject): string => {
+    const url = Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+    console.log(url);
+    return url;
+  };
 
-  // const handleFormSubmit = async (
-  //   e: React.FormEvent<HTMLFormElement>
-  // ): Promise<void> => {
-  //   e.preventDefault();
+  const handleFormSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    e.preventDefault();
+    console.log("asdasdasdasd", formContent);
+    console.log("kkkkkkkkkkkk", encode(formContent));
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode(formContent),
+      });
 
-  //   try {
-  //     const response = await fetch("/", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //       body: encode(formContent),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error(
-  //         `Server returned ${response.status} ${response.statusText}`
-  //       );
-  //     }
-
-  //     setNotice("Form submitted successfully", true);
-  //   } catch (error) {
-  //     console.error("Form submission error:", error);
-  //     setNotice(
-  //       "There was an error submitting the form. Please try again or contact us directly.",
-  //       false
-  //     );
-  //   }
-  // };
+      if (!response.ok) {
+        throw new Error(
+          `Server returned ${response.status} ${response.statusText}`
+        );
+      } else {
+        setNotice("Form submitted successfully", true);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setNotice(
+        "There was an error submitting the form. Please try again or contact us directly.",
+        false
+      );
+    }
+  };
 
   return (
     <section id="Contact">
@@ -56,16 +59,15 @@ function Contact() {
           <h3>Contact us to get your free estimate now!</h3>
           <form
             name="contact"
-            data-netlify-honeypot="honey-pot"
-            // onSubmit={(e) => handleFormSubmit(e)}
-            method="POST"
+            data-netlify-honeypot="bot-field"
+            onSubmit={(e) => handleFormSubmit(e)}
             data-netlify="true"
           >
             <input type="hidden" name="form-name" value="contact" />
             <input
               className="display-none"
-              id="honey-pot"
-              name="honey-pot"
+              id="bot-field"
+              name="bot-field"
             ></input>
             <label htmlFor="name">Name</label>
             <input
