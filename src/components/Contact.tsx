@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { setNotification } from "./Notice";
 function Contact() {
   const [name, setName] = useState<string>("");
@@ -10,21 +10,30 @@ function Contact() {
   ): Promise<void> => {
     e.preventDefault();
     const formContent = new FormData(e.target as HTMLFormElement);
+
     try {
-      await fetch("/", {
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formContent.toString()),
       });
-      setNotice("Form submitted", true);
+
+      if (!response.ok) {
+        throw new Error(
+          `Server returned ${response.status} ${response.statusText}`
+        );
+      }
+
+      setNotice("Form submitted successfully", true);
     } catch (error) {
-      alert(error);
+      console.error("Form submission error:", error);
       setNotice(
-        "There is some error, please try again or email us directly at khanhcvan263@gmail.com",
+        "There was an error submitting the form. Please try again or contact us directly.",
         false
       );
     }
   };
+
   return (
     <section id="Contact">
       <h2>Contact Information</h2>
