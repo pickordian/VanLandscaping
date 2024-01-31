@@ -35,6 +35,7 @@ function Contact() {
             name="contact"
             data-netlify-honeypot="honey-pot"
             onSubmit={(e) => handleFormSubmit(e)}
+            data-netlify="true"
           >
             <input
               className="display-none"
