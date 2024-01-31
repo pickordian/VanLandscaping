@@ -18,7 +18,7 @@ function Contact() {
         (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
       )
       .join("&");
-    console.log(url);
+
     return url;
   };
 
@@ -26,17 +26,15 @@ function Contact() {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
-    console.log("asdasdasdasd", formContent);
-    console.log("kkkkkkkkkkkk", encode(formContent));
+
     try {
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode(formContent),
       });
-      
+
       if (!response.ok) {
-        console.log(response)
         throw new Error(
           `Server returned ${response.status} ${response.statusText}`
         );
