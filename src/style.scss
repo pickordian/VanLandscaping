@@ -344,19 +344,18 @@ html {
             right: 0;
             top: 0;
             background-color: var(--background-color);
-            border-bottom: 0.5rem solid var(--text-color);
             flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             transition: height 300ms ease-in-out;
             z-index: 1000;
-
             li:last-child {
               position: static;
             }
             &.opened {
               height: 100svh;
+              border-bottom: 0.5rem solid var(--text-color);
             }
           }
         }
