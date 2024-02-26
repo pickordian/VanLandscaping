@@ -13,19 +13,19 @@ function Header() {
       </a>
       <BurgerMenu state={isNavOpened} setState={setNavOpened} />
       <ul id="menu" role="menu" aria-labelledby="mobile-menu-toggle"className={isNavOpened ? "opened" : ""}>
-        <li role="navigation-menu-item">
+        <li role="menuitem">
           {" "}
           <a href="#Services" onClick={handleLinkClick}>Services</a>
         </li>
-        <li role="navigation-menu-item">
+        <li role="menuitem">
           {" "}
           <a href="#Gallery" onClick={handleLinkClick}>Gallery</a>
         </li>
-        <li role="navigation-menu-item">
+        <li role="menuitem">
           {" "}
           <a href="#Contact" onClick={handleLinkClick}>Contact</a>
         </li>
-        <li role="navigation-menu-item">
+        <li role="menuitem">
           {" "}
           <a className="CTA-link" href="tel:+14252453647">
             Call us: (425) 245-3647{" "}
